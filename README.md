@@ -3,9 +3,9 @@
 What fix should you pick for your "latest-comment" n+1 queries problem?
 
 I have shared [some fixes to help you solve the
-problem](/5-ways-to-fix-the-latest-comment-n-1-problem.html) and some some
+problem](https://bhserna.com/5-ways-to-fix-the-latest-comment-n-1-problem.html) and some some
 [benchmarks for this 5
-fixes](benchmarks-for-the-fixes-to-the-latest-comment-n-1-problem.html)...
+fixes](https://bhserna.com/benchmarks-for-the-fixes-to-the-latest-comment-n-1-problem.html)...
 
 This is the code that I use to run those benchmarks. You can use play with the
 code and seed values, to make it more specific to your current problem.
