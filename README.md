@@ -1,18 +1,30 @@
-# Fixes for the "latest-comment" n+1 queries problem
+# Benchmark for the fixes to the latest-comment n+1 problem
 
-Do you have to fetch the latest "x" of each record?
+What fix should you pick for your "latest-comment" n+1 queries problem?
 
-One example of this problem is trying to get the latest comment on a list of
-posts, but there are others, like the last review in a list of products, or the
-cheapest price, or the latest payment for each costumer, etc…
+I have shared [some fixes to help you solve the
+problem](/5-ways-to-fix-the-latest-comment-n-1-problem.html) and some some
+[benchmarks for this 5
+fixes](benchmarks-for-the-fixes-to-the-latest-comment-n-1-problem.html)...
 
-This is the code used in the post [5 ways to fix the latest-comment n+1
-problem](https://bhserna.com/5-ways-to-fix-the-latest-comment-n-1-problem.html).
+This is the code that I use to run those benchmarks. You can use play with the
+code and seed values, to make it more specific to your current problem.
 
-You can use it to run the examples, and play with the the code and seed values,
-to pick the right solution for you current case.
+## Benchmark structure
 
-## How to run the examples
+The benchmark will include the memory and the "iterations per second" benchmarks.
+
+With this "reports"…
+
+* `sorted_comments` - Default order for the "has many" association
+* `latest_comment` - A "has one" association for the latest comment
+* `feed looping` - Looping through the latest comment for each post
+* `cached feed` - A version of the looping where we cache feed in memory
+* `russian_doll` - Russian doll-caching (with a simpler cache mechanism)
+* `cached_comment` - Caching the latest comment in a column
+
+
+## How to run the benchmarks
 
 1. **Create a postgres database** with `createdb latest_comment_fixes`. As
    you can see the in `db/config.rb` the name of the database is hardcoded, so
@@ -20,8 +32,7 @@ to pick the right solution for you current case.
 
 2. **Install the dependencies** with `bundle install`.
 
-3. **Run the examples** with `ruby fixes_examples/<file name>`. For example
-   `ruby fixes_examples/01_default_order.rb`.
+3. **Run the benchmark** with `ruby lib/benchmark.rb`.
 
 4. **Change the posts and comments count**  with `Seeds.run(posts_count: 10,
    comments_count: 10)`. You can change de count of post or comments per post,
